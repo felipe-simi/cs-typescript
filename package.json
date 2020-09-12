@@ -1,0 +1,19 @@
+{
+  "name": "cs-typescript",
+  "version": "0.0.1",
+  "description": "Basic knowledge of algorithms and data structure in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felipe-simi/cs-typescript.git"
+  },
+  "author": "Felipe Miranda",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/felipe-simi/cs-typescript/issues"
+  },
+  "homepage": "https://github.com/felipe-simi/cs-typescript#readme"
+}
