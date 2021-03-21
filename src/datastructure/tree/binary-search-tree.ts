@@ -4,6 +4,20 @@ import { Tree } from './tree';
 class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
   private _root!: Node<T>;
 
+  preOrderTraversal(): Array<T> {
+    return this.preOrder(this._root);
+  }
+
+  private preOrder(node: Node<T>): Array<T> {
+    if (!node) {
+      return [];
+    }
+    const results: Array<T> = [node.value];
+    results.push(...this.preOrder(node.left));
+    results.push(...this.preOrder(node.right));
+    return results;
+  }
+
   put(value: T): void {
     this._root = this.putNode(value, this._root);
   }

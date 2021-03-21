@@ -10,6 +10,7 @@ const startup = () => {
   tree.put(new ComparableNumber(20));
   tree.put(new ComparableNumber(40));
   tree.put(new ComparableNumber(80));
+  console.log(tree.preOrderTraversal());
 };
 
 class ComparableNumber implements Comparable<ComparableNumber> {
