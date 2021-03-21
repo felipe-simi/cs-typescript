@@ -10,14 +10,37 @@ const startup = () => {
   tree.put(new ComparableNumber(20));
   tree.put(new ComparableNumber(40));
   tree.put(new ComparableNumber(80));
-  console.log('pre-oreder traversal');
+  console.log('--- pre-oreder traversal ---');
   console.log(tree.preOrderTraversal());
-  console.log('contains 25? ' + tree.contains(new ComparableNumber(25)));
-  console.log('contains 100? ' + tree.contains(new ComparableNumber(100)));
-  console.log('contains 71? ' + tree.contains(new ComparableNumber(71)));
-  console.log('contains 20? ' + tree.contains(new ComparableNumber(20)));
-  console.log('contains 30? ' + tree.contains(new ComparableNumber(30)));
-  console.log('contains 40? ' + tree.contains(new ComparableNumber(40)));
+  console.log('--- contains ---');
+  console.log('25? ' + tree.contains(new ComparableNumber(25)));
+  console.log('100? ' + tree.contains(new ComparableNumber(100)));
+  console.log('71? ' + tree.contains(new ComparableNumber(71)));
+  console.log('20? ' + tree.contains(new ComparableNumber(20)));
+  console.log('30? ' + tree.contains(new ComparableNumber(30)));
+  console.log('40? ' + tree.contains(new ComparableNumber(40)));
+  console.log('--- distance ---');
+  console.log(
+    '20 to 40? ' + tree.getDistanceFrom(new ComparableNumber(20), new ComparableNumber(40))
+  );
+  console.log(
+    '40 to 60? ' + tree.getDistanceFrom(new ComparableNumber(40), new ComparableNumber(60))
+  );
+  console.log(
+    '60 to 80? ' + tree.getDistanceFrom(new ComparableNumber(60), new ComparableNumber(80))
+  );
+  console.log(
+    '20 to 70? ' + tree.getDistanceFrom(new ComparableNumber(20), new ComparableNumber(70))
+  );
+  console.log(
+    '50 to 30? ' + tree.getDistanceFrom(new ComparableNumber(50), new ComparableNumber(30))
+  );
+  console.log(
+    '60 to 60? ' + tree.getDistanceFrom(new ComparableNumber(60), new ComparableNumber(60))
+  );
+  console.log(
+    '60 to 101? ' + tree.getDistanceFrom(new ComparableNumber(60), new ComparableNumber(101))
+  );
 };
 
 class ComparableNumber implements Comparable<ComparableNumber> {

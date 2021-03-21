@@ -21,6 +21,63 @@ class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     return false;
   }
 
+  getDistanceFrom(value1: T, value2: T): number {
+    if (!this.contains(value1) || !this.contains(value2)) {
+      return 0;
+    }
+    const lca = this.getLowestCommonAncestor(value1, value2);
+    if (lca) {
+      return this.countDist(lca, value1) + this.countDist(lca, value2);
+    }
+    return 0;
+  }
+
+  private getLowestCommonAncestor(value1: T, value2: T): Node<T> | null {
+    if (this.contains(value1) && this.contains(value2)) {
+      const node = this.findLca(this._root, value1, value2);
+      return node ? node : null;
+    }
+    return null;
+  }
+
+  private findLca(node: Node<T>, value1: T, value2: T): Node<T> | null {
+    if (!node) {
+      return null;
+    }
+    if (
+      node.value.compareTo(value1) === Ordering.GREATER &&
+      node.value.compareTo(value2) === Ordering.GREATER
+    ) {
+      return this.findLca(node.left, value1, value2);
+    }
+    if (
+      node.value.compareTo(value1) === Ordering.LESS &&
+      node.value.compareTo(value2) === Ordering.LESS
+    )
+      return this.findLca(node.right, value1, value2);
+
+    return node;
+  }
+
+  private countDist(lca: Node<T>, value: T): number {
+    let currentNode = lca;
+    let dist = 0;
+    while (currentNode) {
+      const comparison = value.compareTo(currentNode.value);
+      if (comparison === Ordering.EQUAL) {
+        return dist;
+      }
+      dist++;
+      if (comparison === Ordering.LESS) {
+        currentNode = currentNode.left;
+      }
+      if (comparison === Ordering.GREATER) {
+        currentNode = currentNode.right;
+      }
+    }
+    throw new Error(`Value ${value} not found in sub-tree with LCA ${lca}.`);
+  }
+
   preOrderTraversal(): Array<T> {
     return this.preOrder(this._root);
   }
