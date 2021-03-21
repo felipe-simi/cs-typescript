@@ -4,6 +4,23 @@ import { Tree } from './tree';
 class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
   private _root!: Node<T>;
 
+  contains(value: T): boolean {
+    let currentNode = this._root;
+    while (currentNode) {
+      const comparison = value.compareTo(currentNode.value);
+      if (comparison === Ordering.EQUAL) {
+        return true;
+      }
+      if (comparison === Ordering.LESS) {
+        currentNode = currentNode.left;
+      }
+      if (comparison === Ordering.GREATER) {
+        currentNode = currentNode.right;
+      }
+    }
+    return false;
+  }
+
   preOrderTraversal(): Array<T> {
     return this.preOrder(this._root);
   }
