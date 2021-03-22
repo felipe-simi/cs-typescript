@@ -1,4 +1,5 @@
 import { Comparable, Ordering } from '../../util/comparable';
+import { Node } from './node';
 import { Tree } from './tree';
 
 class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
@@ -111,36 +112,6 @@ class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
       node = new Node(value);
     }
     return node;
-  }
-}
-
-class Node<T extends Comparable<T>> {
-  private _value: T;
-  private _left!: Node<T>;
-  private _right!: Node<T>;
-
-  constructor(value: T) {
-    this._value = value;
-  }
-
-  get value(): T {
-    return this._value;
-  }
-
-  set left(node: Node<T>) {
-    this._left = node;
-  }
-
-  get left(): Node<T> {
-    return this._left;
-  }
-
-  set right(node: Node<T>) {
-    this._right = node;
-  }
-
-  get right(): Node<T> {
-    return this._right;
   }
 }
 
